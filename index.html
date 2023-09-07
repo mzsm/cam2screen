@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta lang="UTF-8">
+        <title>カメラ映像簡易画面共有ツール</title>
+        <style>
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            #video {
+                width: 100vw;
+            }
+        </style>
+    </head>
+    <body>
+        <video id="video" autoplay></video>
+        <script>
+            navigator.mediaDevices.getUserMedia({
+                video: {
+                    width: 1920,
+                    height: 1080
+                },
+                audio: false
+            }).then((stream) => {
+                const elem = document.querySelector('#video')
+                elem.srcObject = stream
+            })
+        </script>
+    </body>
+</html>
